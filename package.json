@@ -1,0 +1,16 @@
+{
+  "name": "redux-webauthn",
+  "version": "1.0.0",
+  "description": "Provides Redux-based wrappers to interact with the Web Authentication API for passwordless authentication.",
+  "main": "index.js",
+  "author": "subyraman",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/redux": "^3.6.0",
+    "@types/webappsec-credential-management": "^0.3.7"
+  }
+}
