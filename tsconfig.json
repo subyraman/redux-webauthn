@@ -1,11 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "sourceMap": true,
         "declaration": true,
         "outDir": "./dist",
         "strict": true,
-        "lib": [ "es2017", "dom"]
+        "lib": [ "es2017", "dom"],
+        "types": ["node", "webappsec-credential-management", "jest"]
     }
 }
