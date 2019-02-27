@@ -10,7 +10,9 @@ This library provides Redux middleware and a reducer to help integrate Web Authe
 
 _For security reasons, this library **must** be used in conjunction with a server-side application that is responsible for generating parameters for the Web Authentication API, and the server **must** properly validate registration and authentication objects (credentials and assertions) created by an authenticator._
 
-## See an live demo of the [client-side UX for the library](https://subyraman.github.io/redux-webauthn-client-example/), or (https://github.com/subyraman/redux-webauthn/tree/master/demo/redux-webauthn-react-typescript-example)[see the `demo` folder for an example demonstrating the full server-client WebAuthn data flow].
+### See a live demo of the [client-side UX for the library](https://subyraman.github.io/redux-webauthn-client-example/) 
+
+### See the `demo` folder for an [example demonstrating the full server-client WebAuthn data flow](https://github.com/subyraman/redux-webauthn/tree/master/demo/redux-webauthn-react-typescript-example), using React, Redux, and Typescript.
 
 ### Quickstart:
 
