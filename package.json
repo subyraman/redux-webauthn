@@ -1,7 +1,7 @@
 {
   "name": "redux-webauthn",
-  "version": "1.0.1",
-  "description": "Provides Redux-based wrappers to interact with the Web Authentication API for passwordless authentication.",
+  "version": "1.0.2",
+  "description": "Redux middleware for registering and authenticating users with the Web Authentication API.",
   "main": "dist/index.js",
   "author": "subyraman",
   "license": "MIT",
