@@ -6,7 +6,7 @@
 
 ## Unsure what Web Authentication is? New to public key cryptography? Start at [Webauthn.Guide](https://webauthn.guide)!
 
-This library provides Redux middleware and a reducer to help integrate Web Authentication into web applications, which will allow your users to authenticate with Touch ID, Windows Hello, Yubikeys, and more. Written in TypeScript for ease of use.
+This library provides Redux middleware and a reducer to help integrate Web Authentication (also known as FIDO2) into web applications, which will allow your users to authenticate with Touch ID, Windows Hello, Yubikeys, and more. Written in TypeScript for ease of use.
 
 _For security reasons, this library **must** be used in conjunction with a server-side application that is responsible for generating parameters for the Web Authentication API, and the server **must** properly validate registration and authentication objects (credentials and assertions) created by an authenticator._
 
