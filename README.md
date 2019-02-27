@@ -10,7 +10,7 @@ This library provides Redux middleware and a reducer to help integrate Web Authe
 
 _For security reasons, this library **must** be used in conjunction with a server-side application that is responsible for generating parameters for the Web Authentication API, and the server **must** properly validate registration and authentication objects (credentials and assertions) created by an authenticator._
 
-#### See an example of the client-side UX for the library, or see the `demo` folder for an example demonstrating the full server-client WebAuthn data flow.
+## See an live demo of the [client-side UX for the library](https://subyraman.github.io/redux-webauthn-client-example/), or (https://github.com/subyraman/redux-webauthn/tree/master/demo/redux-webauthn-react-typescript-example)[see the `demo` folder for an example demonstrating the full server-client WebAuthn data flow].
 
 ### Quickstart:
 
@@ -40,7 +40,7 @@ The `PublicKeyCredentialCreationOptions`, the object used to generate a new keyp
 
 Once that object is retrieved, `redux-webauthn` provides action functions that can be used to execute the appropriate Web Authentication API function. 
 
-See the example middleware given in the demo, providing an example of how to use the action functions for registration:
+See the [example middleware](https://github.com/subyraman/redux-webauthn/blob/master/demo/redux-webauthn-react-typescript-example/static/Middleware.ts) given in the demo, providing an example of how to use the action functions for registration:
 
 ```typescript
  case RequestActionTypes.GET_CREDENTIAL_CREATION_OPTIONS_REQUEST: {
@@ -75,7 +75,7 @@ See the example middleware given in the demo, providing an example of how to use
 
 When registering a user, a new _assertion_ will be created, with a signature created by the private key that was created during registration. See [Webauthn.Guide](https://webauthn.guide) for a deeper explanation. 
 
-As with registration, the browser API expects a `PublicKeyCredentialRequestOptions` object to be generated on your server, and passed into the API. The demo provides an example of how that interaction can take place:
+As with registration, the browser API expects a `PublicKeyCredentialRequestOptions` object to be generated on your server, and passed into the API. The demo provides [example middleware](https://github.com/subyraman/redux-webauthn/blob/master/demo/redux-webauthn-react-typescript-example/static/Middleware.ts) showing how that interaction can take place:
 
 
 ```typescript
