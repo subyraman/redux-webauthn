@@ -148,7 +148,7 @@ ___
 
 ### `<Const>` webauthnCreateCredentialSuccess
 
-▸ **webauthnCreateCredentialSuccess**(serializedCredential: *[SerializedPublicKeyCredential](../interfaces/_types_.serializedpublickeycredential.md)*): `object`
+▸ **webauthnCreateCredentialSuccess**(serializedCredential: *[SerializedPublicKeyCredential](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.serializedpublickeycredential.md)*): `object`
 
 *Defined in [Actions.ts:26](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L26)*
 
@@ -158,7 +158,7 @@ Action function called after a new credential has been successfully created afte
 
 | Name | Type |
 | ------ | ------ |
-| serializedCredential | [SerializedPublicKeyCredential](../interfaces/_types_.serializedpublickeycredential.md) |
+| serializedCredential | [SerializedPublicKeyCredential](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.serializedpublickeycredential.md) |
 
 **Returns:** `object`
 
@@ -209,7 +209,7 @@ ___
 
 ### `<Const>` webauthnGetAssertionSuccess
 
-▸ **webauthnGetAssertionSuccess**(assertion: *[SerializedAssertion](../interfaces/_types_.serializedassertion.md)*): `object`
+▸ **webauthnGetAssertionSuccess**(assertion: *[SerializedAssertion](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.serializedassertion.md)*): `object`
 
 *Defined in [Actions.ts:65](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L65)*
 
@@ -219,7 +219,7 @@ Action function called after an assertion has been successfully created after a 
 
 | Name | Type |
 | ------ | ------ |
-| assertion | [SerializedAssertion](../interfaces/_types_.serializedassertion.md) |
+| assertion | [SerializedAssertion](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.serializedassertion.md) |
 
 **Returns:** `object`
 
@@ -269,7 +269,7 @@ ___
 
 ###  webauthnReducer
 
-▸ **webauthnReducer**(state?: *[WebauthnState](../interfaces/_types_.webauthnstate.md)*, action: *`ActionType`<[&quot;Actions&quot;](_actions_.md)>*): [WebauthnState](../interfaces/_types_.webauthnstate.md)
+▸ **webauthnReducer**(state?: *[WebauthnState](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.webauthnstate.md)*, action: *`ActionType`<[&quot;Actions&quot;](_actions_.md)>*): [WebauthnState](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.webauthnstate.md)
 
 *Defined in [Reducer.ts:11](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Reducer.ts#L11)*
 
@@ -279,7 +279,7 @@ Reducer that can be used to handle actions dispatched from the `webauthnMiddlewa
 
 | Name | Type | Default value |
 | ------ | ------ | ------ |
-| `Default value` state | [WebauthnState](../interfaces/_types_.webauthnstate.md) |  {} as WebauthnState |
+| `Default value` state | [WebauthnState](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.webauthnstate.md) |  {} as WebauthnState |
 | action | `ActionType`<[&quot;Actions&quot;](_actions_.md)> | - |
 
-**Returns:** [WebauthnState](../interfaces/_types_.webauthnstate.md)
+**Returns:** [WebauthnState](https://github.com/subyraman/redux-webauthn/tree/master/docs/interfaces/_types_.webauthnstate.md)
