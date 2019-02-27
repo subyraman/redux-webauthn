@@ -14,7 +14,7 @@ _For security reasons, this library **must** be used in conjunction with a serve
 
 Add the middleware and reducer into your Redux store. The reducer is optional, but can help ease the initial integration of WebAuthn into your application.
 
-```
+```typescript
 import { applyMiddleware, compose, createStore } from "redux"
 import {webauthnMiddleware, webauthnReducer} from "redux-webauthn"
 
@@ -40,7 +40,7 @@ Once that object is retrieved, `redux-webauthn` provides action functions that c
 
 See the example middleware given in the demo, providing an example of how to use the action functions for registration:
 
-```
+```typescript
  case RequestActionTypes.GET_CREDENTIAL_CREATION_OPTIONS_REQUEST: {
     next(action);
 
@@ -76,7 +76,7 @@ When registering a user, a new _assertion_ will be created, with a signature cre
 As with registration, the browser API expects a `PublicKeyCredentialRequestOptions` object to be generated on your server, and passed into the API. The demo provides an example of how that interaction can take place:
 
 
-```
+```typescript
 case RequestActionTypes.GET_ASSERTION_CREATION_OPTIONS_REQUEST: {
     const payload = {login_username: action.payload.username};
     const formData = _objectToFormData(payload);
