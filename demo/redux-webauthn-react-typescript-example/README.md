@@ -4,9 +4,9 @@ This repo provides a full example of registering and authenticating a user using
 
 This example demo uses redux-webauthn, React, and Typescript. A live display of data being passed through the application is provided using the Redux devtools.
 
-The server-side component uses py_webauthn, the Python WebAuthn library created by Duo Labs.
+The server-side component uses [py_webauthn](https://github.com/duo-labs/py_webauthn), the Python WebAuthn library created by Duo Labs.
 
-## If you don't understand what Web Authentication is, check Webauthn.Guide!
+## If you don't understand what Web Authentication is, check [Webauthn.Guide](https://webauthn.guide)!
 
 ### Manual installation:
 
