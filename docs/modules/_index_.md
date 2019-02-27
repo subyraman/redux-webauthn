@@ -1,6 +1,6 @@
-[redux-webauthn](../README.md) > ["Index"](../modules/_index_.md)
+[redux-webauthn](../README.md) > ["index"](../modules/_index_.md)
 
-# External module: "Index"
+# External module: "index"
 
 ## Index
 
@@ -18,7 +18,7 @@
 
 ▸ **webauthnMiddleware**(store: *`MiddlewareAPI`<`Dispatch`<`AnyAction`>, `any`>*): `(Anonymous function)`
 
-*Defined in Index.ts:85*
+*Defined in [index.ts:85](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/index.ts#L85)*
 
 Middleware used to handle WebAuthn registration/authentication actions, waits for the user to respond to an registration/authentication prompt, and then dispatches the payload containing the new credential (for registration) or assertion (for authentications).
 

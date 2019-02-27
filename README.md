@@ -108,7 +108,7 @@ case RequestActionTypes.GET_ASSERTION_CREATION_OPTIONS_REQUEST: {
 
 ▸ **webauthnCreateCredentialFailure**(error: *`Error`*): `object`
 
-*Defined in [Actions.ts:33](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L33)*
+*Defined in [Actions.ts:33](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L33)*
 
 Action function called after a failure in creating a new credential.
 
@@ -127,7 +127,7 @@ ___
 
 ▸ **webauthnCreateCredentialRequest**(publicKeyCredentialCreationOptions: *`PublicKeyCredentialCreationOptions`*): `object`
 
-*Defined in [Actions.ts:16](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L16)*
+*Defined in [Actions.ts:16](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L16)*
 
 Action function to be called during registration, to create a credential. Dispatches the `WEBAUTHN_CREATE_CREDENTIAL_REQUEST` action, which will result in the `webauthnMiddleware` to call `navigator.credentials.create`, the native API for creating a credential.
 
@@ -150,7 +150,7 @@ ___
 
 ▸ **webauthnCreateCredentialSuccess**(serializedCredential: *[SerializedPublicKeyCredential](../interfaces/_types_.serializedpublickeycredential.md)*): `object`
 
-*Defined in [Actions.ts:26](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L26)*
+*Defined in [Actions.ts:26](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L26)*
 
 Action function called after a new credential has been successfully created after a user confirms a registratration. Note that the `ArrayBuffer` items in the assertion are automatically converted in to url-safe base64 strings, without padding.
 
@@ -169,7 +169,7 @@ ___
 
 ▸ **webauthnGetAssertionFailure**(error: *`Error`*): `object`
 
-*Defined in [Actions.ts:56](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L56)*
+*Defined in [Actions.ts:56](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L56)*
 
 Action function called after a failure in creating an assertion.
 
@@ -188,7 +188,7 @@ ___
 
 ▸ **webauthnGetAssertionRequest**(publicKeyCredentialRequestOptions: *`PublicKeyCredentialRequestOptions`*): `object`
 
-*Defined in [Actions.ts:49](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L49)*
+*Defined in [Actions.ts:49](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L49)*
 
 Action function to be called during authentication, to create an authentication assertion, which is used to prove an identity of a user. Dispatches the `WEBAUTHN_GET_ASSERTION_REQUEST` action, which will result in the `webauthnMiddleware` to call `navigator.credentials.get`, the native API for creating an assertion.
 
@@ -211,7 +211,7 @@ ___
 
 ▸ **webauthnGetAssertionSuccess**(assertion: *[SerializedAssertion](../interfaces/_types_.serializedassertion.md)*): `object`
 
-*Defined in [Actions.ts:65](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Actions.ts#L65)*
+*Defined in [Actions.ts:65](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Actions.ts#L65)*
 
 Action function called after an assertion has been successfully created after a user confirms an authentication. Note that the `ArrayBuffer` items in the assertion are automatically converted in to url-safe base64 strings, without padding.
 
@@ -223,13 +223,15 @@ Action function called after an assertion has been successfully created after a 
 
 **Returns:** `object`
 
+___
+
 ## Utility Functions
 
 ### `<Const>` arrayBufferToWebauthnB64
 
 ▸ **arrayBufferToWebauthnB64**(arrayBuffer: *`ArrayBuffer`*): `string`
 
-*Defined in [Utils.ts:6](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Utils.ts#L6)*
+*Defined in [Utils.ts:6](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Utils.ts#L6)*
 
 Utility function for transforming an ArrayBuffer into a url-safe base64 string without padding, used across the WebAuthn API.
 
@@ -248,7 +250,7 @@ ___
 
 ▸ **webauthnB64ToArrayBuffer**(b64String: *`String`*): `ArrayBuffer`
 
-*Defined in [Utils.ts:18](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Utils.ts#L18)*
+*Defined in [Utils.ts:18](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Utils.ts#L18)*
 
 Utility function for transforming a url-safe base64 string without padding into an ArrayBuffer.
 
@@ -260,13 +262,16 @@ Utility function for transforming a url-safe base64 string without padding into 
 
 **Returns:** `ArrayBuffer`
 
+___
+
+
 ## Reducer
 
 ###  webauthnReducer
 
 ▸ **webauthnReducer**(state?: *[WebauthnState](../interfaces/_types_.webauthnstate.md)*, action: *`ActionType`<[&quot;Actions&quot;](_actions_.md)>*): [WebauthnState](../interfaces/_types_.webauthnstate.md)
 
-*Defined in [Reducer.ts:11](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Reducer.ts#L11)*
+*Defined in [Reducer.ts:11](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Reducer.ts#L11)*
 
 Reducer that can be used to handle actions dispatched from the `webauthnMiddleware` object. Suggested unless you would like to create your own reducer to handle the actions yourself.
 

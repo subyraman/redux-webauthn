@@ -18,7 +18,7 @@
 
 ▸ **webauthnReducer**(state?: *[WebauthnState](../interfaces/_types_.webauthnstate.md)*, action: *`ActionType`<[&quot;Actions&quot;](_actions_.md)>*): [WebauthnState](../interfaces/_types_.webauthnstate.md)
 
-*Defined in [Reducer.ts:11](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Reducer.ts#L11)*
+*Defined in [Reducer.ts:11](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Reducer.ts#L11)*
 
 Reducer that can be used to handle actions dispatched from the `webauthnMiddleware` object. Suggested unless you would like to create your own reducer to handle the actions yourself.
 

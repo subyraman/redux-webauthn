@@ -19,7 +19,7 @@
 
 ▸ **arrayBufferToWebauthnB64**(arrayBuffer: *`ArrayBuffer`*): `string`
 
-*Defined in [Utils.ts:6](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Utils.ts#L6)*
+*Defined in [Utils.ts:6](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Utils.ts#L6)*
 
 Utility function for transforming an ArrayBuffer into a url-safe base64 string without padding, used across the WebAuthn API.
 
@@ -38,7 +38,7 @@ ___
 
 ▸ **webauthnB64ToArrayBuffer**(b64String: *`String`*): `ArrayBuffer`
 
-*Defined in [Utils.ts:18](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Utils.ts#L18)*
+*Defined in [Utils.ts:18](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Utils.ts#L18)*
 
 Utility function for transforming a url-safe base64 string without padding into an ArrayBuffer.
 

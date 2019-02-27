@@ -24,7 +24,7 @@
 
 **● id**: *`string`*
 
-*Defined in [Types.ts:2](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Types.ts#L2)*
+*Defined in [Types.ts:2](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Types.ts#L2)*
 
 ___
 <a id="response"></a>
@@ -33,7 +33,7 @@ ___
 
 **● response**: *`object`*
 
-*Defined in [Types.ts:4](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Types.ts#L4)*
+*Defined in [Types.ts:4](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Types.ts#L4)*
 
 #### Type declaration
 
@@ -44,7 +44,7 @@ ___
 
 **● type**: *`string`*
 
-*Defined in [Types.ts:3](https://github.com/subyraman/redux-webauthn/blob/0d7d2ba/src/Types.ts#L3)*
+*Defined in [Types.ts:3](https://github.com/subyraman/redux-webauthn/blob/6b43fe1/src/Types.ts#L3)*
 
 ___
 
