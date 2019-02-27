@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import { webauthnReducer } from "../Reducer";
-import { WebauthnActions } from "..";
+import { WebauthnActions } from "../Index";
 import { SerializedPublicKeyCredential, WebauthnState, SerializedAssertion } from "../Types";
 
 const reducers = combineReducers({
@@ -79,8 +79,8 @@ test('get assertion failure', () => {
     store.dispatch(secondAction);
     const state = store.getState();
     
-    if ('getCredentialError' in state.webauthn) {
-        expect(state.webauthn.getCredentialError).toEqual('Error: Yarr matey')
+    if ('getAssertionError' in state.webauthn) {
+        expect(state.webauthn.getAssertionError).toEqual('Error: Yarr matey')
     } else {
         expect.assertions(1);
     }

@@ -2,27 +2,66 @@ import { action } from "typesafe-actions";
 import { WebauthnActionTypes } from "./Constants";
 import { SerializedPublicKeyCredential, SerializedAssertion } from "./Types";
 
+/**
+ * Action function to be called during registration, to create a credential. Dispatches the `WEBAUTHN_CREATE_CREDENTIAL_REQUEST`
+ * action, which will result in the `webauthnMiddleware` to call `navigator.credentials.create`, the native API for creating
+ * a credential.
+ * 
+ * If a credential is successfully created, the `WEBAUTHN_CREDENTIAL_CREATE_SUCCESS` action type will be dispatched onto the store,
+ * with the new `PublicKeyCredential` as payload.
+ * 
+ * If not successful, the `WEBAUTHN_CREDENTIAL_CREATE_FAILURE` action will be dispatched.
+ * @param publicKeyCredentialCreationOptions 
+ */
 export const webauthnCreateCredentialRequest = (publicKeyCredentialCreationOptions: PublicKeyCredentialCreationOptions) => (
     action(WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST, publicKeyCredentialCreationOptions)
 )
 
+
+/**
+ * Action function called after a new credential has been successfully created after a user
+ * confirms a registratration. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
+ */
 export const webauthnCreateCredentialSuccess = (serializedCredential: SerializedPublicKeyCredential) => (
     action(WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_SUCCESS, serializedCredential)
 );
 
+/**
+ * Action function called after a failure in creating a new credential.
+ */
 export const webauthnCreateCredentialFailure = (error: Error) => (
     action(WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_FAILURE, error)
 );
 
 
+/**
+ * Action function to be called during authentication, to create an authentication assertion, which is used to prove an identity of a user.
+ * Dispatches the `WEBAUTHN_GET_ASSERTION_REQUEST` action, which will result in the `webauthnMiddleware`
+ * to call `navigator.credentials.get`, the native API for creating an assertion.
+ * 
+ * If a credential is successfully created, the `WEBAUTHN_GET_ASSERTION_SUCCESS` action type will be dispatched onto the store,
+ * with the new `PublicKeyCredential` as payload.
+ * 
+ * If not successful, the `WEBAUTHN_GET_ASSERTION_FAILURE` action will be dispatched.
+ * @param publicKeyCredentialCreationOptions 
+ */
 export const webauthnGetAssertionRequest = (publicKeyCredentialRequestOptions: PublicKeyCredentialRequestOptions) => (
     action(WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST, publicKeyCredentialRequestOptions)
 );
 
+/**
+ * Action function called after a failure in creating an assertion.
+ */
 export const webauthnGetAssertionFailure = (error: Error) => (
     action(WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE, error)
 );
 
+/**
+ * Action function called after an assertion has been successfully created after a user
+ * confirms an authentication. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
+ */
 export const webauthnGetAssertionSuccess = (assertion: SerializedAssertion) => (
    action(WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_SUCCESS, assertion)
 )

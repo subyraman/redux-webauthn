@@ -1,3 +1,8 @@
+/**
+ * Utility function for transforming an ArrayBuffer into a url-safe base64 string without
+ * padding, used across the WebAuthn API. 
+ * @param arrayBuffer 
+ */
 export const arrayBufferToWebauthnB64 = (arrayBuffer: ArrayBuffer) => {
     return btoa(String.fromCharCode(
         ...new Uint8Array(arrayBuffer)))
@@ -6,6 +11,10 @@ export const arrayBufferToWebauthnB64 = (arrayBuffer: ArrayBuffer) => {
             .replace(/=/g, "");
 }
 
+/**
+ * Utility function for transforming a url-safe base64 string without padding
+ * into an ArrayBuffer.
+ */
 export const webauthnB64ToArrayBuffer = (b64String: String) => {
     let fromUrlSafe = b64String
         .replace(/\_/g, "/").replace(/\-/g, "+")

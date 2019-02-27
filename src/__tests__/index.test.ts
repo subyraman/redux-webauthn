@@ -1,4 +1,4 @@
-import { webauthnMiddleware, WebauthnActions, webauthnB64ToArrayBuffer, WebauthnActionTypes } from "..";
+import { webauthnMiddleware, WebauthnActions, webauthnB64ToArrayBuffer, WebauthnActionTypes } from "../Index";
 import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore([webauthnMiddleware]);

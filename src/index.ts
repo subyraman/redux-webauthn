@@ -13,7 +13,9 @@ export {webauthnReducer};
 export {SerializedPublicKeyCredential, SerializedAssertion, WebauthnState};
 
 
-
+/**
+ * @ignore
+ */
 const _webauthnCreateCredential = async (publicKeyCredentialCreationOptions: PublicKeyCredentialCreationOptions) => {
     if (!navigator.credentials) {
         throw new Error("WebAuthn unsupported by browser");
@@ -25,7 +27,9 @@ const _webauthnCreateCredential = async (publicKeyCredentialCreationOptions: Pub
     return credential;
 }
 
-
+/**
+ * @ignore
+ */
 export const _webauthnGetAssertion = async (publicKeyCredentialRequestOptions: PublicKeyCredentialRequestOptions) => {
     if (!navigator.credentials) {
         throw new Error("WebAuthn unsupported by browser");
@@ -37,7 +41,9 @@ export const _webauthnGetAssertion = async (publicKeyCredentialRequestOptions: P
 }
 
 
-
+/**
+ * @ignore
+ */
 const serializeCredentialToObject = (newCredential: PublicKeyCredential) => {
     const ret = {} as SerializedPublicKeyCredential;
 
@@ -53,6 +59,9 @@ const serializeCredentialToObject = (newCredential: PublicKeyCredential) => {
     return ret;
 }
 
+/**
+ * @ignore
+ */
 const serializeAssertionToObject = (newAssertion: PublicKeyCredential) => {
     const ret = {} as SerializedAssertion;
     
@@ -69,7 +78,10 @@ const serializeAssertionToObject = (newAssertion: PublicKeyCredential) => {
     return ret;
 }
 
-
+/**
+ * Middleware used to handle WebAuthn registration/authentication actions, waits for the user to respond to an registration/authentication prompt, and then dispatches the payload containing the new credential (for registration) or assertion (for authentications).
+ * @param store 
+ */
 export const webauthnMiddleware: Middleware = store => next => async (action: ActionType<typeof WebauthnActions>) => {
     switch (action.type) {
         case WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST:
@@ -79,18 +91,18 @@ export const webauthnMiddleware: Middleware = store => next => async (action: Ac
                 const serializedCredential = serializeCredentialToObject(credential);
                 const credentialSuccessAction = WebauthnActions.webauthnCreateCredentialSuccess(
                     serializedCredential)
-                return next(credentialSuccessAction);
+                return store.dispatch(credentialSuccessAction);
             } catch (err) {
-                return next(WebauthnActions.webauthnCreateCredentialFailure(err));
+                return store.dispatch(WebauthnActions.webauthnCreateCredentialFailure(err));
             }
         case WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST:
             try {
                 next(action);
                 const assertion = await _webauthnGetAssertion(action.payload);
                 const serializedAssertion = serializeAssertionToObject(assertion);
-                return next(WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion));
+                return store.dispatch(WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion));
             } catch (err) {
-                return next(WebauthnActions.webauthnGetAssertionFailure(err));
+                return store.dispatch(WebauthnActions.webauthnGetAssertionFailure(err));
             }
     }
 

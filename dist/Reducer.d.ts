@@ -1,13 +1,8 @@
 import * as WebauthnActions from './Actions';
 import { ActionType } from 'typesafe-actions/dist/types';
 import { WebauthnState } from './Types';
-export declare function webauthnReducer(state: WebauthnState | undefined, action: ActionType<typeof WebauthnActions>): WebauthnState | {
-    createCredentialError: string;
-    newAssertion?: import("./Types").SerializedAssertion | undefined;
-    getAssertionError?: string | undefined;
-} | {
-    newCredential?: import("./Types").SerializedPublicKeyCredential | undefined;
-    createCredentialError?: string | undefined;
-    getAssertionError?: string | undefined;
-    getCredentialError: string;
-};
+/**
+ * Reducer that can be used to handle actions dispatched from the `webauthnMiddleware` object. Suggested unless you would like to create your own reducer to handle the actions yourself.
+ *
+ */
+export declare function webauthnReducer(state: WebauthnState | undefined, action: ActionType<typeof WebauthnActions>): WebauthnState;

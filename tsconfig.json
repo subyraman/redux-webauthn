@@ -1,12 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2017",
         "module": "commonjs",
         "sourceMap": true,
         "declaration": true,
         "outDir": "./dist",
         "strict": true,
         "lib": [ "es2017", "dom"],
-        "types": ["node", "webappsec-credential-management", "jest"]
+        "types": ["node", "webappsec-credential-management", "jest"],
+    },
+    "exclude": ["demo", "dist"],
+    "typedocOptions": {
+        "mode": "modules",
+        "out": "docs",
+        "theme": "markdown",
+        "exclude": "**/__tests__/**/*",
+        "excludeNotExported": true
     }
 }

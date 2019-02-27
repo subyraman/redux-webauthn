@@ -4,7 +4,11 @@ import { ActionType } from 'typesafe-actions/dist/types';
 import { WebauthnState } from './Types';
 
 
-export function webauthnReducer(state = {} as WebauthnState, action: ActionType<typeof WebauthnActions>) {
+/**
+ * Reducer that can be used to handle actions dispatched from the `webauthnMiddleware` object. Suggested unless you would like to create your own reducer to handle the actions yourself.
+ * 
+ */
+export function webauthnReducer(state = {} as WebauthnState, action: ActionType<typeof WebauthnActions>): WebauthnState {
     switch (action.type) {
         case (WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST):
             return {};
@@ -18,7 +22,7 @@ export function webauthnReducer(state = {} as WebauthnState, action: ActionType<
             const {newCredential, ...stateWithoutCredential} = mergedState;
             return stateWithoutCredential;
         case (WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE): {
-                const newState = {getCredentialError: action.payload.toString()};
+                const newState = {getAssertionError: action.payload.toString()};
                 const mergedState = {...newState, ...state};
                 const {newAssertion, ...stateWithoutAssertion} = mergedState;
                 return stateWithoutAssertion;

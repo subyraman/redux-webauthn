@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const redux_1 = require("redux");
 const Reducer_1 = require("../Reducer");
-const __1 = require("..");
+const Index_1 = require("../Index");
 const reducers = redux_1.combineReducers({
     'webauthn': Reducer_1.webauthnReducer
 });
@@ -26,7 +26,7 @@ const serializedAssertion = {
 };
 test('create credential success', () => {
     const store = redux_1.createStore(reducers);
-    const action = __1.WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
+    const action = Index_1.WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
     store.dispatch(action);
     const state = store.getState();
     if ('newCredential' in state.webauthn) {
@@ -38,9 +38,9 @@ test('create credential success', () => {
 });
 test('create credential error', () => {
     const store = redux_1.createStore(reducers);
-    const firstAction = __1.WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
+    const firstAction = Index_1.WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
     store.dispatch(firstAction);
-    const secondAction = __1.WebauthnActions.webauthnCreateCredentialFailure(new Error('Yarr matey'));
+    const secondAction = Index_1.WebauthnActions.webauthnCreateCredentialFailure(new Error('Yarr matey'));
     store.dispatch(secondAction);
     const state = store.getState();
     expect(state.webauthn.createCredentialError).toBe('Error: Yarr matey');
@@ -48,7 +48,7 @@ test('create credential error', () => {
 });
 test('get assertion success', () => {
     const store = redux_1.createStore(reducers);
-    const action = __1.WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion);
+    const action = Index_1.WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion);
     store.dispatch(action);
     const state = store.getState();
     if ('newAssertion' in state.webauthn) {
@@ -60,13 +60,13 @@ test('get assertion success', () => {
 });
 test('get assertion failure', () => {
     const store = redux_1.createStore(reducers);
-    const firstAction = __1.WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion);
+    const firstAction = Index_1.WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion);
     store.dispatch(firstAction);
-    const secondAction = __1.WebauthnActions.webauthnGetAssertionFailure(new Error('Yarr matey'));
+    const secondAction = Index_1.WebauthnActions.webauthnGetAssertionFailure(new Error('Yarr matey'));
     store.dispatch(secondAction);
     const state = store.getState();
-    if ('getCredentialError' in state.webauthn) {
-        expect(state.webauthn.getCredentialError).toEqual('Error: Yarr matey');
+    if ('getAssertionError' in state.webauthn) {
+        expect(state.webauthn.getAssertionError).toEqual('Error: Yarr matey');
     }
     else {
         expect.assertions(1);

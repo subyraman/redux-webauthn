@@ -10,6 +10,10 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Constants_1 = require("./Constants");
+/**
+ * Reducer that can be used to handle actions dispatched from the `webauthnMiddleware` object. Suggested unless you would like to create your own reducer to handle the actions yourself.
+ *
+ */
 function webauthnReducer(state = {}, action) {
     switch (action.type) {
         case (Constants_1.WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST):
@@ -24,7 +28,7 @@ function webauthnReducer(state = {}, action) {
             const { newCredential } = mergedState, stateWithoutCredential = __rest(mergedState, ["newCredential"]);
             return stateWithoutCredential;
         case (Constants_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE): {
-            const newState = { getCredentialError: action.payload.toString() };
+            const newState = { getAssertionError: action.payload.toString() };
             const mergedState = Object.assign({}, newState, state);
             const { newAssertion } = mergedState, stateWithoutAssertion = __rest(mergedState, ["newAssertion"]);
             return stateWithoutAssertion;

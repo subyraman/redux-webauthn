@@ -1,12 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const Constants_1 = require("./Constants");
 exports.WebauthnActionTypes = Constants_1.WebauthnActionTypes;
@@ -17,24 +9,33 @@ exports.arrayBufferToWebauthnB64 = Utils_1.arrayBufferToWebauthnB64;
 exports.webauthnB64ToArrayBuffer = Utils_1.webauthnB64ToArrayBuffer;
 const Reducer_1 = require("./Reducer");
 exports.webauthnReducer = Reducer_1.webauthnReducer;
-const _webauthnCreateCredential = (publicKeyCredentialCreationOptions) => __awaiter(this, void 0, void 0, function* () {
+/**
+ * @ignore
+ */
+const _webauthnCreateCredential = async (publicKeyCredentialCreationOptions) => {
     if (!navigator.credentials) {
         throw new Error("WebAuthn unsupported by browser");
     }
-    const credential = yield navigator.credentials.create({
+    const credential = await navigator.credentials.create({
         publicKey: publicKeyCredentialCreationOptions
     });
     return credential;
-});
-exports._webauthnGetAssertion = (publicKeyCredentialRequestOptions) => __awaiter(this, void 0, void 0, function* () {
+};
+/**
+ * @ignore
+ */
+exports._webauthnGetAssertion = async (publicKeyCredentialRequestOptions) => {
     if (!navigator.credentials) {
         throw new Error("WebAuthn unsupported by browser");
     }
-    const assertion = yield navigator.credentials.get({
+    const assertion = await navigator.credentials.get({
         publicKey: publicKeyCredentialRequestOptions
     });
     return assertion;
-});
+};
+/**
+ * @ignore
+ */
 const serializeCredentialToObject = (newCredential) => {
     const ret = {};
     const response = newCredential.response;
@@ -46,6 +47,9 @@ const serializeCredentialToObject = (newCredential) => {
     };
     return ret;
 };
+/**
+ * @ignore
+ */
 const serializeAssertionToObject = (newAssertion) => {
     const ret = {};
     const response = newAssertion.response;
@@ -59,30 +63,35 @@ const serializeAssertionToObject = (newAssertion) => {
     };
     return ret;
 };
-exports.webauthnMiddleware = store => next => (action) => __awaiter(this, void 0, void 0, function* () {
+/**
+ * Middleware used to handle WebAuthn registration/authentication actions, waits for the user to respond to an registration/authentication prompt, and then dispatches the payload containing the new credential (for registration) or assertion (for authentications).
+ * @param store
+ */
+exports.webauthnMiddleware = store => next => async (action) => {
     switch (action.type) {
         case Constants_1.WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST:
             try {
                 next(action);
-                const credential = yield _webauthnCreateCredential(action.payload);
+                const credential = await _webauthnCreateCredential(action.payload);
                 const serializedCredential = serializeCredentialToObject(credential);
                 const credentialSuccessAction = WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
-                return next(credentialSuccessAction);
+                debugger;
+                return store.dispatch(credentialSuccessAction);
             }
             catch (err) {
-                return next(WebauthnActions.webauthnCreateCredentialFailure(err));
+                return store.dispatch(WebauthnActions.webauthnCreateCredentialFailure(err));
             }
         case Constants_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST:
             try {
                 next(action);
-                const assertion = yield exports._webauthnGetAssertion(action.payload);
+                const assertion = await exports._webauthnGetAssertion(action.payload);
                 const serializedAssertion = serializeAssertionToObject(assertion);
-                return next(WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion));
+                return store.dispatch(WebauthnActions.webauthnGetAssertionSuccess(serializedAssertion));
             }
             catch (err) {
-                return next(WebauthnActions.webauthnGetAssertionFailure(err));
+                return store.dispatch(WebauthnActions.webauthnGetAssertionFailure(err));
             }
     }
     return next(action);
-});
-//# sourceMappingURL=index.js.map
+};
+//# sourceMappingURL=Index.js.map
