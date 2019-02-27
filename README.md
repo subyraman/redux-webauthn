@@ -2,7 +2,7 @@
 
 **Redux middleware for registering and authenticating users with the Web Authentication API (FIDO2).**
 
-![Demo of redux-webauthn](https://github.com/subyraman/redux-webauthn/demo/demo.gif "Demo of redux-webauthn")
+![Demo gif](https://github.com/subyraman/redux-webauthn/blob/master/demo/demo.gif?raw=true)
 
 ## Unsure what Web Authentication is? New to public key cryptography? Start at [Webauthn.Guide](https://webauthn.guide)!
 
