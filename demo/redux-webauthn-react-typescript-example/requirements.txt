@@ -2,7 +2,7 @@ asn1crypto==0.24.0
 cbor2==4.0.1
 cffi==1.12.1
 cryptography==2.5
-Flask==0.10.1
+Flask==1.0
 Flask-Login==0.4.0
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.14.2
