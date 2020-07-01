@@ -2,7 +2,7 @@ asn1crypto==0.24.0
 cbor2==4.0.1
 cffi==1.12.1
 cryptography==2.5
-Flask==0.10.1
+Flask==1.0
 Flask-SQLAlchemy==2.1
 future==0.17.1
 idna==2.8
