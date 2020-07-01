@@ -42,13 +42,13 @@ function App() {
                         </Col>
                     </Row>
                     <Row className="mb-4">
-                        <Col md="4">
+                        <Col md={{size: 4, offset: 1}} >
                             <div className="mb-4">
                                 <Registration />
                             </div>
                             <Authentication />
                         </Col>
-                        <Col md="8">
+                        <Col md={{size: 5, offset: 1}}>
                             <DevTools />
                         </Col>
                     </Row>
