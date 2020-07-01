@@ -1,46 +1,41 @@
-import * as React from 'react'
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import Fade from 'reactstrap/lib/Fade';
+import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Alert from 'reactstrap/lib/Alert';
-import { AppState } from './Reducers';
+import Fade from 'reactstrap/lib/Fade';
 import * as AppActions from './Actions';
+import { AppState } from './Reducers';
 
-type DispatchProps = ReturnType<typeof mapDispatchToProps>
 
-interface AuthenticationProps extends DispatchProps, AppState {}
+function Authentication() {
+    const dispatch = useDispatch();
+    const ui = useSelector((state: AppState) => state.ui)
+    const webauthn = useSelector((state: AppState) => state.webauthn)
 
-function mapDispatchToProps(dispatch: Dispatch) {
-    return {
-      onAuthenticate: (username: string | undefined) => {
-            if (username) {
-                dispatch(AppActions.getAssertionCreationOptions(username));
-            }
+    const onAuthenticate = React.useCallback(() => {
+        if (ui.username) {
+            dispatch(AppActions.getAssertionCreationOptions(ui.username));
         }
-    }
-}
+    }, [ui]);
 
-
-const Authentication = (props: AuthenticationProps) => {
     return (
-        <Fade in={!!props.ui.credentialValidated} className={`text-left`}>
+        <Fade in={!!ui.credentialValidated} className={`text-left`}>
             <div className={"border-top pt-3"}>
-                <h2>Authenticate as user {props.ui.username}:</h2>
+                <h2 data-testid="h2">Authenticate as user {ui.username}:</h2>
                 <div>
-                    <button className="btn btn-primary" onClick={() => props.onAuthenticate(props.ui.username)}>Sign in</button>
+                    <button data-testid="button" className="btn btn-primary" onClick={onAuthenticate}>Sign in</button>
                 </div>
             </div>
 
-            {props.webauthn.getAssertionError && 
+            {webauthn.getAssertionError && 
                 <div className="mt-3">
                     <Alert color="danger">
-                        Error when creating assertion: {props.webauthn.getAssertionError}
+                        Error when creating assertion: {webauthn.getAssertionError}
                     </Alert>
                 </div>
             }
 
-            {props.ui.assertionValidated && 
-                <div className="mt-3">
+            {ui.assertionValidated && 
+                <div data-testid="success-alert" className="mt-3">
                     <Alert>
                         Logged in!
                     </Alert> 
@@ -51,7 +46,4 @@ const Authentication = (props: AuthenticationProps) => {
 }
 
 
-export default connect(
-    (state: AppState) => state,
-    mapDispatchToProps,
-)(Authentication)
+export default Authentication;

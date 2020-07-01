@@ -6,10 +6,10 @@
         "declaration": true,
         "outDir": "./dist",
         "strict": true,
-        "lib": [ "es2017", "dom"],
-        "types": ["node", "webappsec-credential-management", "jest"],
+        "lib": [ "es2020", "dom"],
+        "types": ["node", "jest"],
     },
-    "exclude": ["demo", "dist"],
+    "exclude": ["demo", "dist", "node_modules"],
     "typedocOptions": {
         "mode": "modules",
         "out": "docs",

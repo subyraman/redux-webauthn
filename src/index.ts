@@ -21,9 +21,9 @@ const _webauthnCreateCredential = async (publicKeyCredentialCreationOptions: Pub
         throw new Error("WebAuthn unsupported by browser");
     }
 
-
     const credential = await navigator.credentials.create({
         publicKey: publicKeyCredentialCreationOptions}) as PublicKeyCredential;
+
     return credential;
 }
 
@@ -35,6 +35,7 @@ export const _webauthnGetAssertion = async (publicKeyCredentialRequestOptions: P
         throw new Error("WebAuthn unsupported by browser");
     }
 
+        
     const assertion = await navigator.credentials.get({
         publicKey: publicKeyCredentialRequestOptions}) as PublicKeyCredential;
     return assertion;

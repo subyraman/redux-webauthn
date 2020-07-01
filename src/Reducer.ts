@@ -1,6 +1,6 @@
 import * as WebauthnActions from './Actions';
 import {WebauthnActionTypes} from './Constants';
-import { ActionType } from 'typesafe-actions/dist/types';
+import { ActionType } from 'typesafe-actions';
 import { WebauthnState } from './Types';
 
 

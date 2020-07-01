@@ -3,12 +3,6 @@ import configureMockStore from 'redux-mock-store';
 
 const mockStore = configureMockStore([webauthnMiddleware]);
 
-let credentialCreationOptions: PublicKeyCredentialCreationOptions;
-let newCredential: PublicKeyCredential;
-
-let credentialRequestOptions: PublicKeyCredentialRequestOptions;
-let newAssertion: PublicKeyCredential;
-
 interface TestNavigator {
     credentials: {
         create: jest.Mock,
@@ -21,6 +15,11 @@ interface TestGlobal extends NodeJS.Global {
 }
 
 declare const global: TestGlobal;
+
+let credentialCreationOptions: PublicKeyCredentialCreationOptions;
+let newCredential: PublicKeyCredential;
+let credentialRequestOptions: PublicKeyCredentialRequestOptions;
+let newAssertion: PublicKeyCredential;
 
 beforeEach(() => {
     credentialCreationOptions = {
@@ -37,38 +36,48 @@ beforeEach(() => {
         pubKeyCredParams: []
     }
 
-    newCredential = {
-        id: 'fjshdkfjsdfsdf==',
-        rawId: webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
-        response: {
-            attestationObject: webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
-            clientDataJSON: webauthnB64ToArrayBuffer('jsondkfjsdfsdf==')
-        },
-        type: 'public-key'
+    const attestationResponse: AuthenticatorAttestationResponse = {
+        attestationObject: webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
+        clientDataJSON: webauthnB64ToArrayBuffer('jsondkfjsdfsdf==')
     }
 
     credentialRequestOptions = {
         challenge: new ArrayBuffer(32)
     }
 
+    const assertionResponse: AuthenticatorAssertionResponse = {
+        signature: webauthnB64ToArrayBuffer('sighdkfjsdfsdf=='),
+        clientDataJSON: webauthnB64ToArrayBuffer('jsondkfjsdfsdf=='),
+        authenticatorData: webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
+        userHandle: null
+    }
+
+    
+
+
+    const extensionResults: AuthenticationExtensionsClientOutputs = {}
+
+    newCredential = {
+        id: 'fjshdkfjsdfsdf==',
+        rawId: webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
+        response: attestationResponse,
+        type: 'public-key',
+        getClientExtensionResults: () => extensionResults
+    }
+
     newAssertion = {
         id: 'fjshdkfjsdfsdf==',
         rawId: webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
         type: 'public-key',
-        response: {
-            signature: webauthnB64ToArrayBuffer('sighdkfjsdfsdf=='),
-            clientDataJSON: webauthnB64ToArrayBuffer('jsondkfjsdfsdf=='),
-            authenticatorData: webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
-            userHandle: null
-        }
+        response: assertionResponse,
+        getClientExtensionResults: () => extensionResults
     }
 
     global.navigator.credentials = {
-       create: jest.fn(),
-       get: jest.fn()
-   } 
-});
-
+        create: jest.fn(),
+        get: jest.fn()
+    }
+}); 
 
 test('successfully creating a credential', async () => {
     const store = mockStore();
@@ -91,6 +100,7 @@ test('successfully creating a credential', async () => {
     expect(firstPayload).toBe(credentialCreationOptions);
 
     const {type: secondActionType, payload: secondPayload} = secondAction;
+
     expect(secondActionType).toBe(WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_SUCCESS)
     expect(secondPayload.id).toBe(newCredential.id),
     expect(secondPayload.response.attestationObject).toBe('atthdkfjsdfsdQ')
@@ -153,4 +163,7 @@ test('credential creation error', async () => {
 
     expect(type).toBe(WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE)
     expect(payload.toString()).toBe('Error: Epic fail detected')
-})
+});
+
+
+

@@ -1,2 +1,4 @@
+.env
+yarn-error.log
 .vscode
 node_modules

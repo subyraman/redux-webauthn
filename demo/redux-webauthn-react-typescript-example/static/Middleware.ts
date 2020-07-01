@@ -122,7 +122,6 @@ export const fetchMiddleware: Middleware = store => next => async (action: AppAc
                     throw new Error(response.fail);
                 }
 
-                debugger;
                 return store.dispatch(ExampleAppActions.validateNewAssertionSuccess())
 
             } catch(err) {
