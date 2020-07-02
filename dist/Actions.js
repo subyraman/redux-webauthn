@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.webauthnGetAssertionSuccess = exports.webauthnGetAssertionFailure = exports.webauthnGetAssertionRequest = exports.webauthnCreateCredentialFailure = exports.webauthnCreateCredentialSuccess = exports.webauthnCreateCredentialRequest = void 0;
 const typesafe_actions_1 = require("typesafe-actions");
 const Constants_1 = require("./Constants");
 /**
@@ -15,11 +16,13 @@ const Constants_1 = require("./Constants");
  */
 exports.webauthnCreateCredentialRequest = (publicKeyCredentialCreationOptions) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST, publicKeyCredentialCreationOptions));
 /**
- * @ignore
+ * Action function called after a new credential has been successfully created after a user
+ * confirms a registratration. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
  */
 exports.webauthnCreateCredentialSuccess = (serializedCredential) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_SUCCESS, serializedCredential));
 /**
- * @ignore
+ * Action function called after a failure in creating a new credential.
  */
 exports.webauthnCreateCredentialFailure = (error) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_FAILURE, error));
 /**
@@ -35,11 +38,13 @@ exports.webauthnCreateCredentialFailure = (error) => (typesafe_actions_1.action(
  */
 exports.webauthnGetAssertionRequest = (publicKeyCredentialRequestOptions) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST, publicKeyCredentialRequestOptions));
 /**
- * @ignore
+ * Action function called after a failure in creating an assertion.
  */
 exports.webauthnGetAssertionFailure = (error) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE, error));
 /**
- * @ignore
+ * Action function called after an assertion has been successfully created after a user
+ * confirms an authentication. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
  */
 exports.webauthnGetAssertionSuccess = (assertion) => (typesafe_actions_1.action(Constants_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_SUCCESS, assertion));
 //# sourceMappingURL=Actions.js.map

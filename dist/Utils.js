@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.webauthnB64ToArrayBuffer = exports.arrayBufferToWebauthnB64 = void 0;
 /**
  * Utility function for transforming an ArrayBuffer into a url-safe base64 string without
  * padding, used across the WebAuthn API.

@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.webauthnMiddleware = exports._webauthnGetAssertion = exports.webauthnReducer = exports.arrayBufferToWebauthnB64 = exports.webauthnB64ToArrayBuffer = exports.WebauthnActionTypes = exports.WebauthnActions = void 0;
 const Constants_1 = require("./Constants");
-exports.WebauthnActionTypes = Constants_1.WebauthnActionTypes;
+Object.defineProperty(exports, "WebauthnActionTypes", { enumerable: true, get: function () { return Constants_1.WebauthnActionTypes; } });
 const WebauthnActions = require("./Actions");
 exports.WebauthnActions = WebauthnActions;
 const Utils_1 = require("./Utils");
-exports.arrayBufferToWebauthnB64 = Utils_1.arrayBufferToWebauthnB64;
-exports.webauthnB64ToArrayBuffer = Utils_1.webauthnB64ToArrayBuffer;
+Object.defineProperty(exports, "arrayBufferToWebauthnB64", { enumerable: true, get: function () { return Utils_1.arrayBufferToWebauthnB64; } });
+Object.defineProperty(exports, "webauthnB64ToArrayBuffer", { enumerable: true, get: function () { return Utils_1.webauthnB64ToArrayBuffer; } });
 const Reducer_1 = require("./Reducer");
-exports.webauthnReducer = Reducer_1.webauthnReducer;
+Object.defineProperty(exports, "webauthnReducer", { enumerable: true, get: function () { return Reducer_1.webauthnReducer; } });
 /**
  * @ignore
  */
@@ -75,7 +76,6 @@ exports.webauthnMiddleware = store => next => async (action) => {
                 const credential = await _webauthnCreateCredential(action.payload);
                 const serializedCredential = serializeCredentialToObject(credential);
                 const credentialSuccessAction = WebauthnActions.webauthnCreateCredentialSuccess(serializedCredential);
-                debugger;
                 return store.dispatch(credentialSuccessAction);
             }
             catch (err) {
@@ -94,4 +94,4 @@ exports.webauthnMiddleware = store => next => async (action) => {
     }
     return next(action);
 };
-//# sourceMappingURL=Index.js.map
+//# sourceMappingURL=index.js.map

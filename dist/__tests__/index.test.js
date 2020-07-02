@@ -21,28 +21,33 @@ beforeEach(() => {
         },
         pubKeyCredParams: []
     };
-    newCredential = {
-        id: 'fjshdkfjsdfsdf==',
-        rawId: Index_1.webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
-        response: {
-            attestationObject: Index_1.webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
-            clientDataJSON: Index_1.webauthnB64ToArrayBuffer('jsondkfjsdfsdf==')
-        },
-        type: 'public-key'
+    const attestationResponse = {
+        attestationObject: Index_1.webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
+        clientDataJSON: Index_1.webauthnB64ToArrayBuffer('jsondkfjsdfsdf==')
     };
     credentialRequestOptions = {
         challenge: new ArrayBuffer(32)
+    };
+    const assertionResponse = {
+        signature: Index_1.webauthnB64ToArrayBuffer('sighdkfjsdfsdf=='),
+        clientDataJSON: Index_1.webauthnB64ToArrayBuffer('jsondkfjsdfsdf=='),
+        authenticatorData: Index_1.webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
+        userHandle: null
+    };
+    const extensionResults = {};
+    newCredential = {
+        id: 'fjshdkfjsdfsdf==',
+        rawId: Index_1.webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
+        response: attestationResponse,
+        type: 'public-key',
+        getClientExtensionResults: () => extensionResults
     };
     newAssertion = {
         id: 'fjshdkfjsdfsdf==',
         rawId: Index_1.webauthnB64ToArrayBuffer('fjshdkfjsdfsdf=='),
         type: 'public-key',
-        response: {
-            signature: Index_1.webauthnB64ToArrayBuffer('sighdkfjsdfsdf=='),
-            clientDataJSON: Index_1.webauthnB64ToArrayBuffer('jsondkfjsdfsdf=='),
-            authenticatorData: Index_1.webauthnB64ToArrayBuffer('atthdkfjsdfsdf=='),
-            userHandle: null
-        }
+        response: assertionResponse,
+        getClientExtensionResults: () => extensionResults
     };
     global.navigator.credentials = {
         create: jest.fn(),
@@ -107,4 +112,4 @@ test('credential creation error', async () => {
     expect(type).toBe(Index_1.WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE);
     expect(payload.toString()).toBe('Error: Epic fail detected');
 });
-//# sourceMappingURL=Index.test.js.map
+//# sourceMappingURL=index.test.js.map

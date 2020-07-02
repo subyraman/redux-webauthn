@@ -1,4 +1,3 @@
-/// <reference types="webappsec-credential-management" />
 export interface SerializedPublicKeyCredential {
     id: string;
     type: string;

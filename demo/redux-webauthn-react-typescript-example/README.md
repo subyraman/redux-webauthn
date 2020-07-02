@@ -34,6 +34,9 @@ An easy way to set up the project is with docker:
 Installation: `docker build . -t react-webauthn:latest`
 Running: `docker run -p 5000:5000 -t react-webauthn:latest`
 
+Javascript tests (via Jest): `docker exec -it react-webauthn:latest yarn jest`
+Python tests (via pytest): `docker exec -it react-webauthn:latest pytest`
+
 ### Understanding:
 
 This demo provides a full example of the server-client data flow for WebAuthn; I strongly recommend keeping the Network tab open in your developer tools to better understand the data being passed back and forth.

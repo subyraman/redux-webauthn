@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebauthnActionTypes = void 0;
 var WebauthnActionTypes;
 (function (WebauthnActionTypes) {
     WebauthnActionTypes["WEBAUTHN_CREATE_CREDENTIAL_REQUEST"] = "WEBAUTHN_CREATE_CREDENTIAL_REQUEST";

@@ -1,4 +1,3 @@
-/// <reference types="webappsec-credential-management" />
 import { WebauthnActionTypes } from "./Constants";
 import { SerializedPublicKeyCredential, SerializedAssertion } from "./Types";
 /**
@@ -12,15 +11,26 @@ import { SerializedPublicKeyCredential, SerializedAssertion } from "./Types";
  * If not successful, the `WEBAUTHN_CREDENTIAL_CREATE_FAILURE` action will be dispatched.
  * @param publicKeyCredentialCreationOptions
  */
-export declare const webauthnCreateCredentialRequest: (publicKeyCredentialCreationOptions: PublicKeyCredentialCreationOptions) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST, PublicKeyCredentialCreationOptions>;
+export declare const webauthnCreateCredentialRequest: (publicKeyCredentialCreationOptions: PublicKeyCredentialCreationOptions) => {
+    type: WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_REQUEST;
+    payload: PublicKeyCredentialCreationOptions;
+};
 /**
- * @ignore
+ * Action function called after a new credential has been successfully created after a user
+ * confirms a registratration. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
  */
-export declare const webauthnCreateCredentialSuccess: (serializedCredential: SerializedPublicKeyCredential) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_SUCCESS, SerializedPublicKeyCredential>;
+export declare const webauthnCreateCredentialSuccess: (serializedCredential: SerializedPublicKeyCredential) => {
+    type: WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_SUCCESS;
+    payload: SerializedPublicKeyCredential;
+};
 /**
- * @ignore
+ * Action function called after a failure in creating a new credential.
  */
-export declare const webauthnCreateCredentialFailure: (error: Error) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_FAILURE, Error>;
+export declare const webauthnCreateCredentialFailure: (error: Error) => {
+    type: WebauthnActionTypes.WEBAUTHN_CREATE_CREDENTIAL_FAILURE;
+    payload: Error;
+};
 /**
  * Action function to be called during authentication, to create an authentication assertion, which is used to prove an identity of a user.
  * Dispatches the `WEBAUTHN_GET_ASSERTION_REQUEST` action, which will result in the `webauthnMiddleware`
@@ -32,12 +42,23 @@ export declare const webauthnCreateCredentialFailure: (error: Error) => import("
  * If not successful, the `WEBAUTHN_GET_ASSERTION_FAILURE` action will be dispatched.
  * @param publicKeyCredentialCreationOptions
  */
-export declare const webauthnGetAssertionRequest: (publicKeyCredentialRequestOptions: PublicKeyCredentialRequestOptions) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST, PublicKeyCredentialRequestOptions>;
+export declare const webauthnGetAssertionRequest: (publicKeyCredentialRequestOptions: PublicKeyCredentialRequestOptions) => {
+    type: WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_REQUEST;
+    payload: PublicKeyCredentialRequestOptions;
+};
 /**
- * @ignore
+ * Action function called after a failure in creating an assertion.
  */
-export declare const webauthnGetAssertionFailure: (error: Error) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE, Error>;
+export declare const webauthnGetAssertionFailure: (error: Error) => {
+    type: WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_FAILURE;
+    payload: Error;
+};
 /**
- * @ignore
+ * Action function called after an assertion has been successfully created after a user
+ * confirms an authentication. Note that the `ArrayBuffer` items in the assertion are automatically
+ * converted in to url-safe base64 strings, without padding.
  */
-export declare const webauthnGetAssertionSuccess: (assertion: SerializedAssertion) => import("typesafe-actions/dist/types").PayloadAction<WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_SUCCESS, SerializedAssertion>;
+export declare const webauthnGetAssertionSuccess: (assertion: SerializedAssertion) => {
+    type: WebauthnActionTypes.WEBAUTHN_GET_ASSERTION_SUCCESS;
+    payload: SerializedAssertion;
+};

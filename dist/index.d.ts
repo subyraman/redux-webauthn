@@ -1,4 +1,3 @@
-/// <reference types="webappsec-credential-management" />
 import { Middleware } from "redux";
 import { WebauthnActionTypes } from "./Constants";
 import * as WebauthnActions from "./Actions";
