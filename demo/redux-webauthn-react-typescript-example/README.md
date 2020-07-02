@@ -15,7 +15,9 @@ An easy way to set up the project is with docker:
 Installation: `docker build . -t react-webauthn:latest`
 Initialize: `docker run -p 5000:5000  --name react-webauthn -t react-webauthn:latest`
 
-After that you can start the container with `docker start /react-webauthn`, and stop with `docker stop /react-webauthn`
+After that you can start the container with `docker start /react-webauthn`. Visit http://localhost:5000/ for the demo.
+
+You can stop the container with `docker stop /react-webauthn`
 
 #### Testing:
 
