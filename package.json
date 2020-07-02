@@ -1,6 +1,6 @@
 {
   "name": "redux-webauthn",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Redux middleware for registering and authenticating users with the Web Authentication API.",
   "main": "dist/index.js",
   "author": "subyraman",
