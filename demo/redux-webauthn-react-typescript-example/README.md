@@ -25,6 +25,7 @@ You can stop the container with `docker stop /react-webauthn`
 You will need to have a running container in order to run tests:
 
 Javascript tests (via Jest): `docker exec -it react-webauthn bash -c "cd /app; yarn jest"`
+
 Python tests (via pytest): `docker exec -it react-webauthn pytest`
 
 ### Manual installation:
