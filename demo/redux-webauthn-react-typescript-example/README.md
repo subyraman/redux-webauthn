@@ -13,6 +13,7 @@ The server-side component uses [py_webauthn](https://github.com/duo-labs/py_weba
 An easy way to set up the project is with docker:
 
 Installation: `docker build . -t react-webauthn:latest`
+
 Initialize: `docker run -p 5000:5000  --name react-webauthn -t react-webauthn:latest`
 
 After that you can start the container with `docker start /react-webauthn`. Visit http://localhost:5000/ for the demo.
