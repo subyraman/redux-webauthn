@@ -8,6 +8,20 @@ The server-side component uses [py_webauthn](https://github.com/duo-labs/py_weba
 
 ## If you don't understand what Web Authentication is, check [Webauthn.Guide](https://webauthn.guide)!
 
+### Installation with Docker:
+
+An easy way to set up the project is with docker:
+
+Installation: `docker build . -t react-webauthn:latest`
+Running: `docker run -p 5000:5000  --name react-webauthn -t react-webauthn:latest`
+
+#### Testing:
+
+You will need to have a running container in order to run tests:
+
+Javascript tests (via Jest): `docker exec -it react-webauthn bash -c "cd /app; yarn jest"`
+Python tests (via pytest): `docker exec -it react-webauthn pytest`
+
 ### Manual installation:
 
 Install and build the frontend components:
@@ -26,16 +40,6 @@ python app.py
 ```
 
 Now visit http://localhost:5000/ for the demo.
-
-### Installation with Docker:
-
-An easy way to set up the project is with docker:
-
-Installation: `docker build . -t react-webauthn:latest`
-Running: `docker run -p 5000:5000 -t react-webauthn:latest`
-
-Javascript tests (via Jest): `docker exec -it react-webauthn:latest yarn jest`
-Python tests (via pytest): `docker exec -it react-webauthn:latest pytest`
 
 ### Understanding:
 

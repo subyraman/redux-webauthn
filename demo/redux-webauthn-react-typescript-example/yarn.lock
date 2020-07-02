@@ -4926,10 +4926,10 @@ redux-devtools@3.5.0:
     prop-types "^15.5.7"
     redux-devtools-instrument "^1.9.0"
 
-redux-webauthn@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/redux-webauthn/-/redux-webauthn-1.0.5.tgz#bfcad7f55d6a18bfb89a0f7593b9937e188c49cb"
-  integrity sha512-Zsfj2UgmpOey5wzuAKIvK7D45/5GlRlLFLV2wEs3nk56rx45waxsPH94Cd+dzVwIEJO7eJD9iHwPe4GEC/ZJ8g==
+redux-webauthn@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/redux-webauthn/-/redux-webauthn-1.0.6.tgz#344d9214504f9a6139e588e2782114c2710fb0ee"
+  integrity sha512-nYLfdU4yDMUilprBk3MaqmEgfDT/nNURbH/im28KceXhRxiGM5Pu0cCYao5ZWTc8m0BwfyO6YiftNhxLPLbpLA==
   dependencies:
     ts-jest "^26.1.1"
     typesafe-actions "^3.1.0"
